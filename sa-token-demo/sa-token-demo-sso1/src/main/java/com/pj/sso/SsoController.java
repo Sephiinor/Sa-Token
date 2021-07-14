@@ -32,4 +32,15 @@ public class SsoController {
 		return AjaxJson.getSuccess("是否登录: " + isLogin);
 	}
 
+	// 测试: 注销登录
+	@RequestMapping("doLogout")
+	public AjaxJson logout(){
+		System.out.println("---------------- 准备下线 ");
+		boolean isLogin = StpUtil.isLogin();
+		if(isLogin){
+			StpUtil.logout();
+		}
+		boolean isLogout = !StpUtil.isLogin();
+		return AjaxJson.getSuccess("是否下线: " + isLogout);
+	}
 }
